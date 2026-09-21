@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: route
+  labels:
+    router: external
+spec:
+  host: route-fs-boilerplate.ext.okd-cs-test-0.k8s.cs.helsinki.fi
+  port:
+    targetPort: 3001
+  to:
+    kind: Service
+    name: svc
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
